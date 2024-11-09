@@ -113,7 +113,6 @@ function loveTesterSubmitHandler(event) {
     if ((key === 'itziar-èlia' || key === 'èlia-itziar') && score === -10) {
         container.classList.add('dislike-mode');
         container.innerHTML = '<h2 class="rotating-text">Puta🫵</h2>';
-        document.body.style.backgroundColor = "#000000";
         
         function createDislikeEmoji(emoji) {
             const dislikeEmoji = document.createElement('div');
@@ -129,8 +128,8 @@ function loveTesterSubmitHandler(event) {
         setInterval(() => createDislikeEmoji('👎'), 300);
         setTimeout(() => {
             container.classList.remove('dislike-mode');
-            document.body.style.backgroundColor = "#f5f5f5";
         }, 5000);
+    
     }
 }
 
