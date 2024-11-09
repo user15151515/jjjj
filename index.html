@@ -3,18 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Love Tester & Perdón</title>
+    <title>holi</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
 
 </head>
 <body>
 
+    <!-- Contenedor inicial con el mensaje y botones -->
+    <div id="initial-message" style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-top: 60px;">
+    <h2>hola bb que necessites</h2>
+    <div style="display: flex; gap: 10px; margin-top: 20px;">
+        <button onclick="showSectionFromButton('love-tester')">comprobar el nostre amor</button>
+        <button onclick="showSectionFromButton('perdo')">estas enfadada</button>
+    </div>
+    </div>
+
     <!-- Menú de navegación -->
     <nav class="main-menu">
         <ul>
-            <li><a href="#" onclick="showSection(event, 'love-tester')">Love Tester</a></li>
-            <li><a href="#" onclick="showSection(event, 'perdo')">Perdó</a></li>
+            <li><a href="#" onclick="showInitialScreen(event)">
+                <img src="casa.png" alt="inici" class="home-icon">
+            </a></li>
+            <li><a href="#" onclick="showSection(event, 'love-tester')">love tester</a></li>
+            <li><a href="#" onclick="showSection(event, 'perdo')">perdó</a></li>
         </ul>
     </nav>
 

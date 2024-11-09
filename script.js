@@ -16,6 +16,53 @@ function showSection(event, section) {
     }
 }
 
+// Ocultar secciones y mostrar solo el mensaje inicial al cargar la página
+window.onload = function() {
+    document.getElementById("initial-message").style.display = "flex";
+    document.getElementById("love-tester-section").style.display = "none";
+    document.getElementById("perdo-section").style.display = "none";
+};
+
+
+function showInitialScreen(event) {
+    event.preventDefault(); // Evita que el enlace recargue la página
+
+    // Ocultar todas las secciones
+    document.getElementById("love-tester-section").style.display = "none";
+    document.getElementById("perdo-section").style.display = "none";
+
+    // Mostrar solo el mensaje inicial
+    document.getElementById("initial-message").style.display = "flex";
+}
+
+
+// Mostrar la sección seleccionada desde los botones iniciales y ocultar el mensaje inicial
+function showSectionFromButton(section) {
+    // Oculta el contenedor inicial
+    document.getElementById("initial-message").style.display = "none";
+    // Muestra la sección seleccionada
+    showSection({ preventDefault: () => {} }, section);
+}
+
+// Modificar la función showSection para asegurar que el mensaje inicial esté oculto
+function showSection(event, section) {
+    event.preventDefault();
+
+    // Ocultar todas las secciones y el contenedor inicial
+    document.getElementById("initial-message").style.display = "none";
+    document.getElementById("love-tester-section").style.display = "none";
+    document.getElementById("perdo-section").style.display = "none";
+
+    if (section === 'love-tester') {
+        resetLoveTester();
+        document.getElementById("love-tester-section").style.display = "flex";
+    } else if (section === 'perdo') {
+        resetPerdo();
+        document.getElementById("perdo-section").style.display = "flex";
+    }
+}
+
+
 // Función para reiniciar el Love Tester a su estado inicial
 function resetLoveTester() {
     document.getElementById('name1').value = '';
@@ -129,7 +176,6 @@ function loveTesterSubmitHandler(event) {
         setTimeout(() => {
             container.classList.remove('dislike-mode');
         }, 5000);
-    
     }
 }
 
