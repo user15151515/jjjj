@@ -240,7 +240,7 @@ function updateTimeElapsed() {
     const seconds = Math.floor((diffInMs % (1000 * 60)) / 1000);
 
     // Actualiza el contenido del contador
-    document.getElementById("time-elapsed").textContent = `${months} meses, ${days} días, ${hours} horas, ${minutes} minutos, ${seconds} segundos`;
+    document.getElementById("time-elapsed").textContent = `${months} messos, ${days} dies, ${hours} hores, ${minutes} minuts, ${seconds} segons`;
 }
 
 // Llama a updateTimeElapsed cada segundo
