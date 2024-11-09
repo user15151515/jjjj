@@ -1,0 +1,328 @@
+/* Estilo general */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+       /* Configuración inicial para ocultar ambas secciones */
+       #love-tester-section, #perdo-section {
+        display: none; /* Ocultas inicialmente */
+    }
+
+    /* Estilos de la sección Perdón */
+/* Asegúrate de que todas las secciones se ajusten al color de fondo */
+#perdo-section {
+    background-color: #ffefef; /* Mismo color rosado claro */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    #perdo-section #container {
+        text-align: center;
+        background: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    #message {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .button {
+        padding: 15px 25px;
+        font-size: 16px;
+        color: #fff;
+        background-color: #ff4081;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .button:hover {
+        transform: scale(1.1);
+    }
+
+    /* Mensaje final */
+    #final-message {
+        display: none;
+        font-size: 64px;
+        color: #ff4a4a;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    /* Efectos de confeti */
+    .confetti {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background: pink;
+        opacity: 0.9;
+        border-radius: 50%;
+        animation: fall 3s linear infinite;
+    }
+
+    @keyframes fall {
+        0% { transform: translateY(0) rotate(0); }
+        100% { transform: translateY(100vh) rotate(360deg); }
+    }
+
+/* Establece un color de fondo uniforme en toda la página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffefef; /* Rosado claro */
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+/* Contenedor principal de Love Tester */
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el contenido horizontalmente */
+    gap: 15px; /* Espacio entre los elementos */
+}
+
+h1 {
+    font-size: 2rem;
+    color: #ff4081;
+    text-align: center; /* Centra el texto del título */
+    margin-bottom: 10px;
+}
+
+p {
+    margin: 10px 0;
+    font-size: 1.2rem;
+    color: #333;
+    text-align: center; /* Centra el texto del párrafo */
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra los elementos del formulario */
+    gap: 10px; /* Espacio entre los elementos del formulario */
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    text-align: center; /* Centra el texto dentro del campo de entrada */
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #ff4081;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #e03570;
+}
+
+/* Resultado del Test */
+#result {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    color: #333;
+    text-align: center; /* Centra el texto del resultado */
+    width: 100%;
+}
+
+.progress-bar-container {
+    width: 100%;
+    background-color: #ddd;
+    border-radius: 25px;
+    margin-top: 20px;
+}
+
+.progress-bar {
+    height: 30px;
+    width: 0;
+    background-color: #ff4081;
+    border-radius: 25px;
+    transition: width 1s;
+}
+
+#percentage {
+    font-size: 1.5rem;
+    color: #ff4081;
+}
+
+
+.progress-bar.party-mode {
+    animation: blink 0.3s infinite alternate;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100vh) scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) scale(1);
+        opacity: 0.9; /* Corazones menos transparentes al final */
+    }
+}
+
+.heart {
+    position: fixed;
+    top: -10vh;
+    width: 20px;
+    height: 20px;
+    background-color: rgb(255, 0, 43);
+    transform: rotate(45deg);
+    opacity: 1; /* Opacidad alta para que los corazones se vean mejor */
+    animation: fall linear infinite;
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: rgb(255, 0, 43);
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -10px;
+    left: 0;
+}
+
+.heart::after {
+    left: 10px;
+    top: 0;
+}
+
+
+@keyframes blink {
+    0% { background-color: #ff4081; }
+    100% { background-color: #FFD700; }
+}
+
+
+@keyframes rainbowColors {
+    0% { background-color: #ff0000a5; }
+    16% { background-color: #ff770079; }
+    33% { background-color: #ffff0085; }
+    50% { background-color: #00ff007b; }
+    66% { background-color: #0000ff82; }
+    83% { background-color: #4c008274; }
+    100% { background-color: #8c00ff6b; }
+}
+
+.container.party-mode {
+    position: absolute;
+    animation: rainbowColors 3s infinite linear;
+    color: #fff;
+    transition: color 0.3s;
+}
+
+@keyframes fallDislike {
+    0% {
+        transform: translateY(-100vh) scale(0.8);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) scale(1.2);
+        opacity: 0.9;
+    }
+}
+
+.dislike-emoji {
+    position: fixed;
+    top: -10vh;
+    font-size: 2rem;
+    animation: fallDislike linear infinite;
+    opacity: 0.9;
+}
+.rotating-text {
+    font-size: 3rem;
+    color: #ff4081;
+    animation: spin 2s linear infinite;
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Estilo del menú principal */
+/* Estilo del menú principal */
+.main-menu {
+    background-color: #ff4081;
+    padding: 10px 0;
+    text-align: center;
+    position: fixed; /* Hace que el menú esté fijo en la parte superior */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Asegura que el menú esté en una capa superior */
+}
+
+.main-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.main-menu li {
+    margin: 0 15px;
+}
+
+.main-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.main-menu a:hover {
+    color: #ffd1e1;
+}
+
+/* Añadir un margen superior al contenedor principal para evitar que el contenido quede detrás del menú */
+.container {
+    margin-top: 60px; /* Ajusta este valor según la altura del menú */
+}
+
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+

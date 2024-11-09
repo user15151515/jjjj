@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Tester & Perdón</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
+
+</head>
+<body>
+
+    <!-- Menú de navegación -->
+    <nav class="main-menu">
+        <ul>
+            <li><a href="#" onclick="showSection(event, 'love-tester')">Love Tester</a></li>
+            <li><a href="#" onclick="showSection(event, 'perdo')">Perdó</a></li>
+        </ul>
+    </nav>
+
+    <!-- Sección Love Tester -->
+    <div class="container" id="love-tester-section">
+        <h1>Love Tester</h1>
+        <p>¡Comprueba vuestra compatibilidad!</p>
+        <form id="love-tester-form">
+            <input type="text" id="name1" placeholder="Tu Nombre" required>
+            <input type="text" id="name2" placeholder="Su Nombre" required>
+            <button type="submit">Test</button>
+        </form>
+        <div id="result">
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <div id="percentage"></div>
+        </div>
+    </div>
+
+    <!-- Sección Perdón -->
+    <div id="perdo-section">
+        <div id="container">
+            <div id="message">hola èlia em perdones?</div>
+            <div class="buttons">
+                <button class="button yes" onclick="sayYes()">Sí</button>
+                <button class="button no" onclick="sayNo()">No</button>
+            </div>
+        </div>
+        <div id="final-message">jejeje gràcies t'estimo ❤️</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
