@@ -3,6 +3,7 @@ function showSection(event, section) {
     event.preventDefault(); // Evita que el enlace recargue la página
 
     // Ocultar ambas secciones
+    document.getElementById("initial-message").style.display = "none";
     document.getElementById("love-tester-section").style.display = "none";
     document.getElementById("perdo-section").style.display = "none";
 
@@ -23,7 +24,6 @@ window.onload = function() {
     document.getElementById("perdo-section").style.display = "none";
 };
 
-
 function showInitialScreen(event) {
     event.preventDefault(); // Evita que el enlace recargue la página
 
@@ -35,7 +35,6 @@ function showInitialScreen(event) {
     document.getElementById("initial-message").style.display = "flex";
 }
 
-
 // Mostrar la sección seleccionada desde los botones iniciales y ocultar el mensaje inicial
 function showSectionFromButton(section) {
     // Oculta el contenedor inicial
@@ -44,33 +43,8 @@ function showSectionFromButton(section) {
     showSection({ preventDefault: () => {} }, section);
 }
 
-// Modificar la función showSection para asegurar que el mensaje inicial esté oculto
-function showSection(event, section) {
-    event.preventDefault();
-
-    // Ocultar todas las secciones y el contenedor inicial
-    document.getElementById("initial-message").style.display = "none";
-    document.getElementById("love-tester-section").style.display = "none";
-    document.getElementById("perdo-section").style.display = "none";
-
-    if (section === 'love-tester') {
-        resetLoveTester();
-        document.getElementById("love-tester-section").style.display = "flex";
-    } else if (section === 'perdo') {
-        resetPerdo();
-        document.getElementById("perdo-section").style.display = "flex";
-    }
-}
-
-
 // Función para reiniciar el Love Tester a su estado inicial
 function resetLoveTester() {
-    document.getElementById('name1').value = '';
-    document.getElementById('name2').value = '';
-    document.getElementById('progress-bar').style.width = '0';
-    document.getElementById('percentage').textContent = '';
-    
-    // Restaurar contenido del contenedor y eliminar clases de efectos
     const container = document.querySelector('.container');
     container.classList.remove('party-mode', 'dislike-mode');
     container.innerHTML = `
@@ -89,7 +63,11 @@ function resetLoveTester() {
         </div>
     `;
 
-    // Reasignar el evento de submit al formulario reiniciado
+    // Restablecer valores iniciales y asignar el evento de submit al formulario reiniciado
+    document.getElementById("name1").value = '';
+    document.getElementById("name2").value = '';
+    document.getElementById("progress-bar").style.width = '0';
+    document.getElementById("percentage").textContent = '';
     document.getElementById("love-tester-form").addEventListener("submit", loveTesterSubmitHandler);
 }
 
@@ -171,10 +149,15 @@ function loveTesterSubmitHandler(event) {
             setTimeout(() => { dislikeEmoji.remove(); }, 3500);
         }
 
-        setInterval(() => createDislikeEmoji('💩'), 200);
-        setInterval(() => createDislikeEmoji('👎'), 300);
+        // Guardar los intervalos para poder limpiarlos después
+        const poopInterval = setInterval(() => createDislikeEmoji('💩'), 200);
+        const thumbsDownInterval = setInterval(() => createDislikeEmoji('👎'), 300);
+
+        // Detener la caída de emojis y reiniciar el contenedor después de 5 segundos
         setTimeout(() => {
-            container.classList.remove('dislike-mode');
+            clearInterval(poopInterval);
+            clearInterval(thumbsDownInterval);
+            resetLoveTester();  // Reinicia el contenedor
         }, 5000);
     }
 }
@@ -241,3 +224,25 @@ function getRandomColor() {
     const colors = ["#ff4a4a", "#ff7a7a", "#ffbaba", "#ff8e8e", "#ff6161"];
     return colors[Math.floor(Math.random() * colors.length)];
 }
+
+function updateTimeElapsed() {
+    const startDate = new Date("2024-09-20T00:00:00");
+    const now = new Date();
+    
+    // Calcula la diferencia total en milisegundos
+    const diffInMs = now - startDate;
+
+    // Calcula los meses, días, horas, minutos y segundos
+    const months = Math.floor(diffInMs / (1000 * 60 * 60 * 24 * 30.44));
+    const days = Math.floor((diffInMs % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diffInMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diffInMs % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diffInMs % (1000 * 60)) / 1000);
+
+    // Actualiza el contenido del contador
+    document.getElementById("time-elapsed").textContent = `${months} meses, ${days} días, ${hours} horas, ${minutes} minutos, ${seconds} segundos`;
+}
+
+// Llama a updateTimeElapsed cada segundo
+setInterval(updateTimeElapsed, 1000);
+updateTimeElapsed();
