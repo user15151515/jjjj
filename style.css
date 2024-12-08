@@ -201,8 +201,7 @@ button:hover {
 }
 
 /* Botones iniciales y botones de la sección Perdón */
-#initial-message button,
-.button {
+#initial-message button, .button {
     padding: 15px 25px;
     font-size: 16px;
     color: #fff;
@@ -211,6 +210,8 @@ button:hover {
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease;
+    display: block; /* Asegura que se apilen bien si es necesario */
+    margin: 0 auto; /* Centrar los botones horizontalmente */
 }
 
 #initial-message button:hover,
@@ -276,11 +277,20 @@ button:hover {
 
 /* Media Query para pantallas pequeñas */
 @media (max-width: 600px) {
-    #initial-message button,
-    .button {
-        padding: 10px 20px;
-        font-size: 14px;
-        width: 100%;
+    #initial-message {
+        flex-direction: column; /* Colocar los botones verticalmente */
+        align-items: center; /* Asegurar que estén centrados horizontalmente */
+        gap: 20px; /* Espacio vertical entre los botones */
+        padding: 20px; /* Añadir espacio alrededor del contenedor */
+    }
+
+    #initial-message button, .button {
+        width: 80%; /* Botones ocupan el 80% del ancho de la pantalla */
+        max-width: 300px; /* Límite de ancho */
+        font-size: 1rem; /* Tamaño de fuente ajustado */
+        padding: 12px 15px; /* Espaciado interno para mayor comodidad */
+        margin: 0 auto; /* Centrar horizontalmente */
+        border-radius: 8px; /* Bordes redondeados para mejor apariencia */
     }
 
     .container {
