@@ -17,6 +17,17 @@ function showSection(event, section) {
     }
 }
 
+function toggleMenu() {
+    const menu = document.querySelector('.main-menu ul');
+    const hamburger = document.querySelector('.hamburger');
+
+    // Alternar clases para mostrar/ocultar el menú y animar el botón
+    menu.classList.toggle('show');
+    hamburger.classList.toggle('active');
+}
+
+
+
 // Ocultar secciones y mostrar solo el mensaje inicial al cargar la página
 window.onload = function() {
     document.getElementById("initial-message").style.display = "flex";

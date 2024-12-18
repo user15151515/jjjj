@@ -1,13 +1,25 @@
-/* Estilos generales */
+/* Variables de colores principales */
+:root {
+    --pink-bright: #ff4081;
+    --pink-hover: #e03570;
+    --pink-light: #ffd1e1;
+    --gray-dark: #333;
+    --gray-light: #ddd;
+    --background-light: #ffefef;
+    --white: #fff;
+}
+
+/* Reset general */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Estilo del cuerpo */
 body {
     font-family: Arial, sans-serif;
-    background-color: #ffefef; /* Fondo rosado */
+    background-color: var(--background-light);
     margin: 0;
     overflow: hidden;
     display: flex;
@@ -16,9 +28,9 @@ body {
     height: 100vh;
 }
 
-/* Estilos principales de contenedores */
+/* Contenedor general */
 .container {
-    background-color: #fff;
+    background-color: var(--white);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
@@ -29,12 +41,13 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 15px;
-    margin-top: 60px; /* Evita solapamiento con el menú */
+    margin-top: 60px;
 }
 
+/* Tipografía */
 h1 {
     font-size: 2rem;
-    color: #ff4081;
+    color: var(--pink-bright);
     text-align: center;
     margin-bottom: 10px;
 }
@@ -42,10 +55,11 @@ h1 {
 p {
     margin: 10px 0;
     font-size: 1.2rem;
-    color: #333;
+    color: var(--gray-dark);
     text-align: center;
 }
 
+/* Formularios */
 form {
     width: 100%;
     display: flex;
@@ -57,15 +71,15 @@ form {
 input {
     width: 100%;
     padding: 10px;
-    border: 2px solid #ddd;
+    border: 2px solid var(--gray-light);
     border-radius: 5px;
     text-align: center;
 }
 
 button {
     padding: 10px 20px;
-    background-color: #ff4081;
-    color: white;
+    background-color: var(--pink-bright);
+    color: var(--white);
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -74,21 +88,21 @@ button {
 }
 
 button:hover {
-    background-color: #e03570;
+    background-color: var(--pink-hover);
 }
 
-/* Estilos de la barra de progreso y resultado */
+/* Barra de progreso */
 #result {
     margin-top: 20px;
     font-size: 1.5rem;
-    color: #333;
+    color: var(--gray-dark);
     text-align: center;
     width: 100%;
 }
 
 .progress-bar-container {
     width: 100%;
-    background-color: #ddd;
+    background-color: var(--gray-light);
     border-radius: 25px;
     margin-top: 20px;
 }
@@ -96,28 +110,19 @@ button:hover {
 .progress-bar {
     height: 30px;
     width: 0;
-    background-color: #ff4081;
+    background-color: var(--pink-bright);
     border-radius: 25px;
     transition: width 1s;
 }
 
 #percentage {
     font-size: 1.5rem;
-    color: #ff4081;
+    color: var(--pink-bright);
 }
 
-/* Estilos del mensaje final */
-#final-message {
-    display: none;
-    font-size: 64px;
-    color: #ff4a4a;
-    font-weight: bold;
-    text-align: center;
-}
-
-/* Estilos del menú principal */
+/* Menú principal */
 .main-menu {
-    background-color: #ff4081;
+    background-color: var(--pink-bright);
     padding: 10px 0;
     text-align: center;
     position: fixed;
@@ -127,10 +132,12 @@ button:hover {
     z-index: 1000;
 }
 
+#time-counter strong {
+    color: #ff4081;
+}
+
 .main-menu ul {
     list-style: none;
-    margin: 0;
-    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -141,27 +148,23 @@ button:hover {
 }
 
 .main-menu a {
-    color: white;
+    color: var(--white);
     text-decoration: none;
     font-size: 1.2rem;
     font-weight: bold;
-    display: flex;
-    align-items: center;
 }
 
 .main-menu a:hover {
-    color: #ffd1e1;
+    color: var(--pink-light);
 }
 
-/* Icono de casa */
 .home-icon {
     width: 40px;
     height: 40px;
     margin-right: 5px;
-    vertical-align: middle;
 }
 
-/* Estilos de la sección Love Tester */
+/* Sección Love Tester */
 #love-tester-section {
     display: none;
 }
@@ -170,10 +173,10 @@ button:hover {
     animation: blink 0.3s infinite alternate;
 }
 
-/* Estilos de la sección Perdón */
+/* Sección Perdón */
 #perdo-section {
     display: none;
-    background-color: #ffefef;
+    background-color: var(--background-light);
     width: 100%;
     height: 100%;
     display: flex;
@@ -183,7 +186,7 @@ button:hover {
 
 #perdo-section #container {
     text-align: center;
-    background: #fff;
+    background: var(--white);
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -200,26 +203,49 @@ button:hover {
     gap: 20px;
 }
 
-/* Botones iniciales y botones de la sección Perdón */
-#initial-message button, .button {
-    padding: 15px 25px;
+/* Mensaje inicial */
+#initial-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+#initial-message h2 {
+    margin-bottom: 20px;
+}
+
+#initial-message button {
+    padding: 20px;
     font-size: 16px;
-    color: #fff;
-    background-color: #ff4081;
+    color: var(--white);
+    background-color: var(--pink-bright);
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease;
-    display: block; /* Asegura que se apilen bien si es necesario */
-    margin: 0 auto; /* Centrar los botones horizontalmente */
+    margin: 10px;
 }
 
-#initial-message button:hover,
-.button:hover {
+
+#initial-message button:hover {
     transform: scale(1.1);
 }
 
-/* Efectos de confeti y corazones */
+/* Contenedor de botones con comportamiento estricto */
+#initial-message-button {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+/* Efectos visuales */
 .confetti, .heart {
     position: absolute;
     width: 10px;
@@ -235,7 +261,6 @@ button:hover {
     height: 20px;
     background-color: rgb(255, 0, 43);
     transform: rotate(45deg);
-    animation: fall linear infinite;
 }
 
 .heart::before,
@@ -258,62 +283,34 @@ button:hover {
     top: 0;
 }
 
-/* Efecto de desagrado */
-.dislike-emoji {
-    position: fixed;
-    top: -10vh;
-    font-size: 2rem;
-    animation: fallDislike linear infinite;
-    opacity: 0.9;
+/* Animaciones */
+@keyframes fall {
+    0% { transform: translateY(0) rotate(0); }
+    100% { transform: translateY(100vh) rotate(360deg); }
 }
 
-.rotating-text {
-    font-size: 3rem;
-    color: #ff4081;
-    animation: spin 2s linear infinite;
-    text-align: center;
-    margin: 20px 0;
+@keyframes blink {
+    0% { background-color: var(--pink-bright); }
+    100% { background-color: #FFD700; }
 }
 
-/* Media Query para pantallas pequeñas */
+/* Responsive */
 @media (max-width: 600px) {
-    #initial-message {
-        flex-direction: column; /* Colocar los botones verticalmente */
-        align-items: center; /* Asegurar que estén centrados horizontalmente */
-        gap: 20px; /* Espacio vertical entre los botones */
-        padding: 20px; /* Añadir espacio alrededor del contenedor */
-    }
-
-    #initial-message button, .button {
-        width: 80%; /* Botones ocupan el 80% del ancho de la pantalla */
-        max-width: 300px; /* Límite de ancho */
-        font-size: 1rem; /* Tamaño de fuente ajustado */
-        padding: 12px 15px; /* Espaciado interno para mayor comodidad */
-        margin: 0 auto; /* Centrar horizontalmente */
-        border-radius: 8px; /* Bordes redondeados para mejor apariencia */
-    }
-
     .container {
         max-width: 90%;
-        margin-top: 50px;
         padding: 15px;
     }
 
     .main-menu ul {
-        flex-direction: row; /* Asegura que los elementos se mantengan en una fila */
-        overflow-x: auto; /* Permite hacer scroll si hay demasiados elementos para caber en una fila */
-        white-space: nowrap; /* Evita que los elementos se vayan a múltiples filas */
+        flex-direction: row;
+        overflow-x: auto;
+        white-space: nowrap;
     }
 
     .main-menu li {
-        margin: 0 10px; /* Reduce el margen para adaptarse a pantallas pequeñas */
+        margin: 0 10px;
     }
 
-    /* Opcional: ajustar el tamaño de fuente para que se mantenga legible */
-    .main-menu a {
-        font-size: 1rem;
-    }
-    
     .home-icon {
         width: 30px;
         height: 30px;
@@ -323,22 +320,27 @@ button:hover {
         font-size: 1.5rem;
     }
 
-    #message,
-    #final-message,
-    .rotating-text {
-        font-size: 1.8rem;
+    #initial-message {
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100%;
+        margin:        0;
+        padding: 0 10px;
+        box-sizing: border-box;
     }
 
-    .progress-bar-container {
-        height: 20px;
+    #initial-message button {
+        width: 100%;
+        max-width: 300px;
+        font-size: 1rem;
+        padding: 12px 15px;
+        margin: 10px auto;
     }
 
-    .progress-bar {
-        height: 100%;
-    }
-
-    #percentage {
-        font-size: 1.2rem;
+    #initial-message-button {
+        flex-wrap: wrap;
+        flex-direction: column;
     }
 
     #time-counter {
@@ -348,68 +350,13 @@ button:hover {
         transform: translateX(-50%);
         padding: 15px 20px;
         font-size: 0.9rem;
-        width: 90%; /* Ahora ocupa el 90% del ancho de la pantalla */
-        max-width: 400px; /* Límite de ancho en pantallas más grandes */
+        width: 90%;
+        max-width: 400px;
         text-align: center;
         background-color: #ffefef;
         border-radius: 8px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        line-height: 1.5; /* Espaciado entre líneas para mejor legibilidad */
+        line-height: 1.5;
     }
 }
 
-#time-counter {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #ffefef;
-    padding: 15px 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    font-family: Arial, sans-serif;
-    font-size: 1rem;
-    color: #333;
-}
-
-#time-counter strong {
-    color: #ff4081;
-    margin-right: 10px;
-}
-
-/* Animaciones */
-@keyframes fall {
-    0% { transform: translateY(0) rotate(0); }
-    100% { transform: translateY(100vh) rotate(360deg); }
-}
-
-@keyframes blink {
-    0% { background-color: #ff4081; }
-    100% { background-color: #FFD700; }
-}
-
-@keyframes rainbowColors {
-    0% { background-color: #ff0000a5; }
-    16% { background-color: #ff770079; }
-    33% { background-color: #ffff0085; }
-    50% { background-color: #00ff007b; }
-    66% { background-color: #0000ff82; }
-    83% { background-color: #4c008274; }
-    100% { background-color: #8c00ff6b; }
-}
-
-@keyframes fallDislike {
-    0% { transform: translateY(-100vh) scale(0.8); opacity: 1; }
-    100% { transform: translateY(100vh) scale(1.2); opacity: 0.9; }
-}
-
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-.container.party-mode {
-    position: absolute;
-    animation: rainbowColors 3s infinite linear;
-    color: #fff;
-    transition: color 0.3s;
-}
