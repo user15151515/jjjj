@@ -1,84 +1,311 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>holi</title>
-    <link rel="icon" href="imagenes/logo.ico" type="image/x-icon">   
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Interrail Explorer</title>
+  <!-- Enlazamos el CSS externo -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Fuente de Google Fonts (ejemplo) -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+  <!-- Firebase App (debe ir antes que cualquier otro script) -->
+
 
 </head>
 <body>
-
-    <!-- Contenedor inicial con el mensaje y botones -->
-    <div id="initial-message" >
-    <h2>hola bb que necessites</h2>
-    <div id="initial-message-button">
-        <button onclick="showSectionFromButton('love-tester')">comprobar el nostre amor</button>
-        <button onclick="showSectionFromButton('perdo')">estas enfadada</button>
-        <button onclick="window.location.href='https://user15151515.github.io/deudas/'">deudas</button>
-        <button onclick="window.location.href='https://user15151515.github.io/pelis-series/'">pelis/series</button>
-
-
-    </div>
-    </div>
-
-    <!-- Menú de navegación -->
-    <nav class="main-menu">
-        <div class="hamburger" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <ul>
-            <li><a href="#" onclick="showInitialScreen(event)">
-                <img src="imagenes/casa.png" alt="inici" class="home-icon">
-            </a></li>
-            <li><a href="#" onclick="showSection(event, 'love-tester')">love tester</a></li>
-            <li><a href="#" onclick="showSection(event, 'perdo')">perdó</a></li>
-            <li><a href="https://user15151515.github.io/deudas/">deudas</a></li>
-            <li><a href="https://user15151515.github.io/pelis-series/">pelis/series</a></li>
-
-        </ul>
+    
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <!-- Barra de navegación -->
+  <header class="main-header">
+    <nav class="navbar">
+      <div class="navbar-logo">
+        <a href="#home" class="navbar-brand">Interrail Explorer</a>
+      </div>
+      <ul class="navbar-menu">
+        <li><a href="#amsterdam">Amsterdam</a></li>
+        <li><a href="#praga">Praga</a></li>
+        <li><a href="#viena">Viena</a></li>
+        <li><a href="#budapest">Budapest</a></li>
+        <li><a href="#split">Split</a></li>
+        <li><a href="#hvar">Hvar</a></li>
+      </ul>
     </nav>
+  </header>
 
-    <div id="time-counter" style="position: fixed; bottom: 20px; right: 20px; background-color: #ffefef; padding: 15px 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); font-family: Arial, sans-serif;">
-        <strong id="time-title" style="color:#ff4081">tiempo sufrido:</strong>
-        <span id="time-elapsed">Calculando...</span>
+  <!-- Sección Hero / Presentación -->
+  <section id="home" class="hero-section">
+    <div class="hero-content">
+      <h1>¡Prepárate para la Aventura!</h1>
+      <p>Explora las ciudades más vibrantes de Europa, comparte tus fotos y crea recuerdos inolvidables con la comunidad de viajeros.</p>
+      <button class="cta-button" onclick="document.querySelector('.navbar-menu li a').scrollIntoView()">¡Explora!</button>
     </div>
-    
-    
+  </section>
 
-    <!-- Sección Love Tester -->
-    <div class="container" id="love-tester-section">
-        <h1>Love Tester</h1>
-        <p>¡Comprueba vuestra compatibilidad!</p>
-        <form id="love-tester-form">
-            <input type="text" id="name1" placeholder="Tu Nombre" required>
-            <input type="text" id="name2" placeholder="Su Nombre" required>
-            <button type="submit">Test</button>
-        </form>
-        <div id="result">
-            <div class="progress-bar-container">
-                <div class="progress-bar" id="progress-bar"></div>
-            </div>
-            <div id="percentage"></div>
-        </div>
+  <!-- Sección Amsterdam -->
+  <section id="amsterdam" class="city-section">
+    <div class="section-header">
+      <h2>Amsterdam</h2>
+      <p>Canales, arquitectura única y mucha cultura.</p>
     </div>
 
-    <!-- Sección Perdón -->
-    <div id="perdo-section">
-        <div id="container">
-            <div id="message">hola èlia em perdones?</div>
-            <div class="buttons">
-                <button class="button yes" onclick="sayYes()">Sí</button>
-                <button class="button no" onclick="sayNo()">No</button>
-            </div>
-        </div>
-        <div id="final-message">jejeje gràcies t'estimo ❤️</div>
+    <!-- Contenedor de imágenes Amsterdam -->
+    <div class="images-container" id="amsterdam-photos">
+      <!-- Aquí el script.js mostrará dinámicamente las fotos de Amsterdam -->
     </div>
 
-    <script src="script.js"></script>
+    <!-- Formulario para subir imagen en Amsterdam -->
+    <form class="upload-form" id="amsterdam-upload-form">
+      <label for="amsterdam-image-file">Subir foto de Amsterdam:</label>
+      <input 
+        type="file" 
+        id="amsterdam-image-file" 
+        name="amsterdam-image-file" 
+        accept="image/*" 
+        required
+      />
+      <button type="submit">Subir Imagen</button>
+    </form>
+
+    <!-- Contenedor de comentarios Amsterdam -->
+    <div class="comments-section" id="amsterdam-comments">
+      <h3>Comentarios</h3>
+      <!-- Aquí el script.js mostrará los comentarios -->
+    </div>
+
+    <!-- Formulario para añadir un nuevo comentario en Amsterdam -->
+    <form class="comment-form" id="amsterdam-comment-form">
+      <label for="amsterdam-comment-input">Deja tu comentario:</label>
+      <input 
+        type="text" 
+        id="amsterdam-comment-input" 
+        name="amsterdam-comment-input" 
+        placeholder="Escribe aquí tu comentario..." 
+        required
+      />
+      <button type="submit">Añadir Comentario</button>
+    </form>
+  </section>
+
+  <!-- Sección Praga -->
+  <section id="praga" class="city-section">
+    <div class="section-header">
+      <h2>Praga</h2>
+      <p>Una ciudad mágica llena de historia y monumentos.</p>
+    </div>
+
+    <!-- Contenedor de imágenes Praga -->
+    <div class="images-container" id="praga-photos"></div>
+
+    <!-- Formulario para subir imagen en Praga -->
+    <form class="upload-form" id="praga-upload-form">
+      <label for="praga-image-file">Subir foto de Praga:</label>
+      <input 
+        type="file" 
+        id="praga-image-file" 
+        name="praga-image-file" 
+        accept="image/*" 
+        required
+      />
+      <button type="submit">Subir Imagen</button>
+    </form>
+
+    <!-- Contenedor de comentarios Praga -->
+    <div class="comments-section" id="praga-comments">
+      <h3>Comentarios</h3>
+    </div>
+
+    <!-- Formulario para añadir comentario en Praga -->
+    <form class="comment-form" id="praga-comment-form">
+      <label for="praga-comment-input">Deja tu comentario:</label>
+      <input 
+        type="text" 
+        id="praga-comment-input" 
+        name="praga-comment-input"
+        placeholder="Escribe aquí tu comentario..." 
+        required
+      />
+      <button type="submit">Añadir Comentario</button>
+    </form>
+  </section>
+
+  <!-- Sección Viena -->
+  <section id="viena" class="city-section">
+    <div class="section-header">
+      <h2>Viena</h2>
+      <p>La elegancia musical y arquitectónica de Austria.</p>
+    </div>
+
+    <!-- Contenedor de imágenes Viena -->
+    <div class="images-container" id="viena-photos"></div>
+
+    <!-- Formulario para subir imagen en Viena -->
+    <form class="upload-form" id="viena-upload-form">
+      <label for="viena-image-file">Subir foto de Viena:</label>
+      <input 
+        type="file" 
+        id="viena-image-file" 
+        name="viena-image-file" 
+        accept="image/*" 
+        required
+      />
+      <button type="submit">Subir Imagen</button>
+    </form>
+
+    <!-- Contenedor de comentarios Viena -->
+    <div class="comments-section" id="viena-comments">
+      <h3>Comentarios</h3>
+    </div>
+
+    <!-- Formulario para añadir comentario en Viena -->
+    <form class="comment-form" id="viena-comment-form">
+      <label for="viena-comment-input">Deja tu comentario:</label>
+      <input 
+        type="text" 
+        id="viena-comment-input" 
+        name="viena-comment-input"
+        placeholder="Escribe aquí tu comentario..." 
+        required
+      />
+      <button type="submit">Añadir Comentario</button>
+    </form>
+  </section>
+
+  <!-- Sección Budapest -->
+  <section id="budapest" class="city-section">
+    <div class="section-header">
+      <h2>Budapest</h2>
+      <p>Termas, puentes impresionantes y una vida nocturna vibrante.</p>
+    </div>
+
+    <!-- Contenedor de imágenes Budapest -->
+    <div class="images-container" id="budapest-photos"></div>
+
+    <!-- Formulario para subir imagen en Budapest -->
+    <form class="upload-form" id="budapest-upload-form">
+      <label for="budapest-image-file">Subir foto de Budapest:</label>
+      <input 
+        type="file" 
+        id="budapest-image-file" 
+        name="budapest-image-file" 
+        accept="image/*" 
+        required
+      />
+      <button type="submit">Subir Imagen</button>
+    </form>
+
+    <!-- Contenedor de comentarios Budapest -->
+    <div class="comments-section" id="budapest-comments">
+      <h3>Comentarios</h3>
+    </div>
+
+    <!-- Formulario para añadir comentario en Budapest -->
+    <form class="comment-form" id="budapest-comment-form">
+      <label for="budapest-comment-input">Deja tu comentario:</label>
+      <input 
+        type="text" 
+        id="budapest-comment-input" 
+        name="budapest-comment-input" 
+        placeholder="Escribe aquí tu comentario..." 
+        required
+      />
+      <button type="submit">Añadir Comentario</button>
+    </form>
+  </section>
+
+  <!-- Sección Split -->
+  <section id="split" class="city-section">
+    <div class="section-header">
+      <h2>Split</h2>
+      <p>Mar azul, ruinas romanas y paisajes de ensueño en Croacia.</p>
+    </div>
+
+    <!-- Contenedor de imágenes Split -->
+    <div class="images-container" id="split-photos"></div>
+
+    <!-- Formulario para subir imagen en Split -->
+    <form class="upload-form" id="split-upload-form">
+      <label for="split-image-file">Subir foto de Split:</label>
+      <input 
+        type="file" 
+        id="split-image-file" 
+        name="split-image-file" 
+        accept="image/*" 
+        required
+      />
+      <button type="submit">Subir Imagen</button>
+    </form>
+
+    <!-- Contenedor de comentarios Split -->
+    <div class="comments-section" id="split-comments">
+      <h3>Comentarios</h3>
+    </div>
+
+    <!-- Formulario para añadir comentario en Split -->
+    <form class="comment-form" id="split-comment-form">
+      <label for="split-comment-input">Deja tu comentario:</label>
+      <input 
+        type="text" 
+        id="split-comment-input" 
+        name="split-comment-input" 
+        placeholder="Escribe aquí tu comentario..." 
+        required
+      />
+      <button type="submit">Añadir Comentario</button>
+    </form>
+  </section>
+
+  <!-- Sección Hvar -->
+  <section id="hvar" class="city-section">
+    <div class="section-header">
+      <h2>Hvar</h2>
+      <p>Fiestas, calas cristalinas y atardeceres inigualables.</p>
+    </div>
+
+    <!-- Contenedor de imágenes Hvar -->
+    <div class="images-container" id="hvar-photos"></div>
+
+    <!-- Formulario para subir imagen en Hvar -->
+    <form class="upload-form" id="hvar-upload-form">
+      <label for="hvar-image-file">Subir foto de Hvar:</label>
+      <input 
+        type="file" 
+        id="hvar-image-file" 
+        name="hvar-image-file" 
+        accept="image/*" 
+        required
+      />
+      <button type="submit">Subir Imagen</button>
+    </form>
+
+    <!-- Contenedor de comentarios Hvar -->
+    <div class="comments-section" id="hvar-comments">
+      <h3>Comentarios</h3>
+    </div>
+
+    <!-- Formulario para añadir comentario en Hvar -->
+    <form class="comment-form" id="hvar-comment-form">
+      <label for="hvar-comment-input">Deja tu comentario:</label>
+      <input 
+        type="text" 
+        id="hvar-comment-input" 
+        name="hvar-comment-input"
+        placeholder="Escribe aquí tu comentario..." 
+        required
+      />
+      <button type="submit">Añadir Comentario</button>
+    </form>
+  </section>
+
+  <!-- Pie de página -->
+  <footer class="main-footer">
+    <p>© 2024 Interrail Explorer - Comparte tus viajes con el mundo</p>
+  </footer>
+
+  <!-- Script principal -->
+  <script src="script.js"></script>
 </body>
 </html>
