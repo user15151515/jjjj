@@ -17,24 +17,12 @@ function showSection(event, section) {
     }
 }
 
-
 // Ocultar secciones y mostrar solo el mensaje inicial al cargar la página
 window.onload = function() {
     document.getElementById("initial-message").style.display = "flex";
     document.getElementById("love-tester-section").style.display = "none";
     document.getElementById("perdo-section").style.display = "none";
 };
-
-function showInitialScreen(event) {
-    event.preventDefault(); // Evita que el enlace recargue la página
-
-    // Ocultar todas las secciones
-    document.getElementById("love-tester-section").style.display = "none";
-    document.getElementById("perdo-section").style.display = "none";
-
-    // Mostrar solo el mensaje inicial
-    document.getElementById("initial-message").style.display = "flex";
-}
 
 // Mostrar la sección seleccionada desde los botones iniciales y ocultar el mensaje inicial
 function showSectionFromButton(section) {
