@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Principal</title>
+    <title>‎</title>
     <link rel="icon" href="imagenes/logo.ico" type="image/x-icon">   
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
 </head>
 <body>
     <!-- Contenedor inicial con el mensaje y botones -->
     <div id="initial-message">
         <h2>hola bb, que necessites</h2>
         <div id="initial-message-button">
-            <button onclick="showSectionFromButton('love-tester')">comprobar el nostre amor</button>
-            <button onclick="showSectionFromButton('perdo')">estàs enfadada</button>
+            <button onclick="window.location.href='https://user15151515.github.io/perdo/'">estas enfadada</button>
             <button onclick="window.location.href='https://user15151515.github.io/deudas/'">deudas</button>
             <button onclick="window.location.href='https://user15151515.github.io/pelis-series/'">pelis/series</button>
+            <button onclick="window.location.href='https://user15151515.github.io/padel/'">pàdel</button>
+
         </div>
     </div>
 
@@ -26,10 +26,11 @@
             <li><a href="#" onclick="showInitialScreen(event)">
                 <img src="imagenes/casa.png" alt="Inicio" class="home-icon">
             </a></li>
-            <li><a href="#" onclick="showSection(event, 'love-tester')">love tester</a></li>
-            <li><a href="#" onclick="showSection(event, 'perdo')">perdó</a></li>
+            <li><a href="https://user15151515.github.io/deudas/">perdó</a></li>
             <li><a href="https://user15151515.github.io/deudas/">deudas</a></li>
             <li><a href="https://user15151515.github.io/pelis-series/">pelis/series</a></li>
+            <li><a href="https://user15151515.github.io/padel/'">pàdel</a></li>
+
         </ul>
     </nav>
 
@@ -37,35 +38,6 @@
     <div id="time-counter">
         <strong id="time-title" style="color:#ff4081">tiempo sufrido:</strong>
         <span id="time-elapsed">calculando...</span>
-    </div>
-
-    <!-- Sección Love Tester -->
-    <div class="container" id="love-tester-section">
-        <h1>Love Tester</h1>
-        <p>¡Comprueba vuestra compatibilidad!</p>
-        <form id="love-tester-form">
-            <input type="text" id="name1" placeholder="Tu Nombre" required>
-            <input type="text" id="name2" placeholder="Su Nombre" required>
-            <button type="submit">Test</button>
-        </form>
-        <div id="result">
-            <div class="progress-bar-container">
-                <div class="progress-bar" id="progress-bar"></div>
-            </div>
-            <div id="percentage"></div>
-        </div>
-    </div>
-
-    <!-- Sección Perdón -->
-    <div id="perdo-section">
-        <div id="container">
-            <div id="message">hola èlia em perdones? pls</div>
-            <div class="buttons">
-                <button class="button yes" onclick="sayYes()">Sí</button>
-                <button class="button no" onclick="sayNo()">No</button>
-            </div>
-        </div>
-        <div id="final-message">jejeje gracies. t'estimo❤️</div>
     </div>
 
     <script src="script.js"></script>

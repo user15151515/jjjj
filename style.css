@@ -166,14 +166,7 @@ button:hover {
     vertical-align: middle;
 }
 
-/* Sección Love Tester */
-#love-tester-section {
-    display: none;
-}
 
-.progress-bar.party-mode {
-    animation: blink 0.3s infinite alternate;
-}
 
 /* Sección Perdón */
 #perdo-section {
@@ -253,43 +246,6 @@ button:hover {
     justify-content: center;
 }
 
-/* Efectos visuales */
-.confetti, .heart {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background: pink;
-    opacity: 0.9;
-    border-radius: 50%;
-    animation: fall 3s linear infinite;
-}
-
-.heart {
-    width: 20px;
-    height: 20px;
-    background-color: rgb(255, 0, 43);
-    transform: rotate(45deg);
-}
-
-.heart::before,
-.heart::after {
-    content: "";
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: rgb(255, 0, 43);
-    border-radius: 50%;
-}
-
-.heart::before {
-    top: -10px;
-    left: 0;
-}
-
-.heart::after {
-    left: 10px;
-    top: 0;
-}
 
 #time-counter {
     position: fixed;
@@ -307,15 +263,7 @@ button:hover {
 
 
 /* Animaciones */
-@keyframes fall {
-    0% { transform: translateY(0) rotate(0); }
-    100% { transform: translateY(100vh) rotate(360deg); }
-}
 
-@keyframes blink {
-    0% { background-color: var(--pink-bright); }
-    100% { background-color: #FFD700; }
-}
 
 @keyframes float {
     0%, 100% { transform: translateY(0px); }
