@@ -18,7 +18,7 @@
 
 /* Estilo del cuerpo */
 body {
-    background: linear-gradient(135deg, #ffe9ed 100%, #ffefef 0%);
+    background: var(--background-light);
     margin: 0;
     overflow: hidden;
     display: flex;

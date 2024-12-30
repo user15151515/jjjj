@@ -6,7 +6,6 @@ function showSection(event, section) {
 // Ocultar secciones y mostrar solo el mensaje inicial al cargar la página
 window.onload = function() {
     document.getElementById("initial-message").style.display = "flex";
-    document.getElementById("perdo-section").style.display = "none";
 };
 
 function showSectionFromButton(section) {
