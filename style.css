@@ -217,6 +217,8 @@ button:hover {
     padding: 0 20px;
     box-sizing: border-box;
     animation: float 3s ease-in-out infinite, fadeIn 0.8s ease-in-out forwards;
+    margin-top: -40px; 
+
 }
 
 #initial-message h2 {
