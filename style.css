@@ -657,6 +657,17 @@ thead th {
         width: 25%;
     }
 
+    .subtract-button:hover, #mark-all-paid:hover, #archive-all-debts:hover, #show-archived:hover, #bicing-button:hover{
+        transform: scale(1);
+        background-color: transparent;
+        color: var(--rosaoscuro);
+    }
+
+    .subtract-button:hover svg {
+        fill: var(--rosaoscuro);
+      }
+    
+
     #mark-all-paid, #archive-all-debts, #show-archived {
             width: 100%;
             padding: 9px;
@@ -678,6 +689,8 @@ thead th {
     .bicing-container {
 width: 50%;
     }
+
+
 
 
 }
