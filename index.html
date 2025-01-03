@@ -1,111 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>‎ </title>
-  <link rel="icon" href="imagenes/logo.ico" type="image/x-icon">   
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>‎</title>
+    <link rel="icon" href="imagenes/logo.ico" type="image/x-icon">   
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Contenedor inicial con el mensaje y botones -->
+    <div id="initial-message">
+        <h2>hola bb, que necessites</h2>
+        <div id="initial-message-button">
+            <button onclick="window.location.href='https://user15151515.github.io/perdo/'">estas enfadada</button>
+            <button onclick="window.location.href='https://user15151515.github.io/deudas/'">deudas</button>
+            <button onclick="window.location.href='https://user15151515.github.io/pelis-series/'">pelis/series</button>
+            <button onclick="window.location.href='https://user15151515.github.io/padel/'">pàdel</button>
 
-  <!-- Navigation -->
-  <nav class="main-menu">
-    <div class="menu-content">
-      <a href="https://user15151515.github.io/jjjj/" class="menu-item">
-        <img src="imagenes/casa.png" alt="Inicio" class="home-icon">
-      </a>
-      <div class="summary-text" id="payment-summary">
-        Ningú deu res 🥳
-      </div>
-    </div>
-  </nav>
-
-  <!-- Main Container -->
-  <div class="container">
-
-<!-- Button Container -->
-<div class="button-container">
-  <button id="start-add-debt" class="primary-button">Afegir Deuda</button>
-  
-  <!-- Contenedor para el botón de Bicing y el botón de restar -->
-  <div class="bicing-container">
-    <button id="bicing-button" class="primary-button bicing-button">
-      Bicing
-    </button>
-    <button id="subtract-bicing-button" class="subtract-button" title="Restar Bicing">
-      <!-- SVG para el signo de restar -->
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16">
-        <path d="M19 13H5v-2h14v2z"/>
-      </svg>
-    </button>
-</div>
-
-
-
+        </div>
     </div>
 
-    <!-- Wizard Form -->
-    <div id="wizard" class="wizard hidden">
-      <button class="close-wizard" id="close-wizard">&times;</button>
-      <div id="step-name" class="step">
-        <h2>Qui?</h2>
-        <input type="text" id="wizard-name" placeholder="Escriu el nom" />
-        <button class="next-button" data-next="step-amount">Següent</button>
-      </div>
-      <div id="step-amount" class="step hidden">
-        <h2>Quant?</h2>
-        <input type="text" id="wizard-amount" placeholder="Escriu la quantitat" />
-        <button class="next-button" data-next="step-description">Següent</button>
-      </div>
-      <div id="step-description" class="step hidden">
-        <h2>Per què?</h2>
-        <input type="text" id="wizard-description" placeholder="Descripció breu" />
-        <button id="add-debt-button" class="primary-button">Afegir</button>
-      </div>
+    <!-- Menú de navegación -->
+    <nav class="main-menu">
+        <ul>
+            <li><a href="#" onclick="showInitialScreen(event)">
+                <img src="imagenes/casa.png" alt="Inicio" class="home-icon">
+            </a></li>
+            <li><a href="https://user15151515.github.io/perdo/">perdó</a></li>
+            <li><a href="https://user15151515.github.io/deudas/">deudas</a></li>
+            <li><a href="https://user15151515.github.io/pelis-series/">pelis/series</a></li>
+            <li><a href="https://user15151515.github.io/padel/">pàdel</a></li>
+
+        </ul>
+    </nav>
+
+    <!-- Contador de tiempo -->
+    <div id="time-counter">
+        <strong id="time-title" style="color:#ff4081">tiempo sufrido:</strong>
+        <span id="time-elapsed">calculando...</span>
     </div>
 
-    <!-- Debt Table -->
-    <table id="debt-table">
-      <thead>
-        <tr id="cabezeros" style="padding: 0px;">
-          <th id="sort-date" class="sortable">Data</th>
-          <th id="sort-person" class="sortable">Qui</th>
-          <th id="sort-amount" class="sortable">Quantitat</th>
-          <th>Descripció</th>
-          <th>Estat</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Las filas se generan dinámicamente -->
-      </tbody>
-    </table>
-
-    <!-- Archived Debts -->
-    <div class="button-group">
-      <button id="show-archived" class="show-archived">Mostrar deudas archivadas</button>
-      <button id="mark-all-paid" class="show-archived">Marcar tot com a pagat</button>
-      <button id="archive-all-debts" class="show-archived">Arxivar tot</button>
-
-    </div>
-    <div id="archived-debts" class="archived-debts" style="display: none;">
-      <div class="archived-actions" style="display: none;">
-        <button class="delete-button" style="display: none;">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"> <path d="M3 6h18v2H3zm3 3h12v12H6zm5-5h2v3h-2z"></path> </svg> Eliminar
-        </button>
-        <button class="unarchive-button" style="display: none;"></button>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"> <path d="M20.54 5.23L19.15 3.9A2 2 0 0 0 17.8 3.34H6.15A2 2 0 0 0 4.8 3.9L3.46 5.23A1.99 1.99 0 0 0 3 6.75V19a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.75c0-.53-.21-1.04-.59-1.42zm-1 13.77H4.99V8h14.05v11zM12 16c.55 0 1-.45 1-1v-3h2l-3-3-3 3h2v3c0 .55.45 1 1 1z"></path> </svg> Desarchivar
-        </button>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Firebase Scripts -->
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-  
-  <!-- Custom Script -->
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
