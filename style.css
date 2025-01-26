@@ -232,6 +232,7 @@
     /* Ajusta #initial-message en móvil */
     #initial-message {
       padding: 20px;
+      height: 95vh;
     }
     #initial-message button {
       width: 100%;
