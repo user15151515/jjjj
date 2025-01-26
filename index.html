@@ -1,49 +1,59 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>‎</title>
-    <link rel="icon" href="imagenes/logo.ico" type="image/x-icon">   
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>‎ </title>  
+  <link rel="icon" href="imagenes/logo.ico" type="image/x-icon">   
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Contenedor inicial con el mensaje y botones -->
-    <div id="initial-message">
-        <h2>hola bb, que necessites</h2>
-        <div id="initial-message-button">
-            <button onclick="window.location.href='https://user15151515.github.io/perdo/'">estas enfadada</button>
-            <button onclick="window.location.href='https://user15151515.github.io/deudas/'">deudas</button>
-            <button onclick="window.location.href='https://user15151515.github.io/pelis-series/'">pelis/series</button>
-            <button onclick="window.location.href='https://user15151515.github.io/padel/'">pàdel</button>
-            <button onclick="window.location.href='https://1drv.ms/f/c/ccb87158314f490b/Et1ZKaGD6XBPhOD7Qd6vnRYBrPaaR5KlRftHOaW4Y8rIvg?e=b76qgk'">basquet</button>
 
-
-        </div>
+  <!-- Contenedor inicial con el mensaje y botones -->
+  <div id="initial-message">
+    <h2>hola bb que necessites</h2>
+    <div id="initial-message-button">
+      <button onclick="window.location.href='https://user15151515.github.io/perdo/'">estas enfadada</button>
+      <button onclick="window.location.href='https://user15151515.github.io/deudas/'">deudas</button>
+      <button onclick="window.location.href='https://user15151515.github.io/pelis-series/'">pelis/series</button>
+      <button onclick="window.location.href='https://user15151515.github.io/padel/'">pàdel</button>
+      <button onclick="window.location.href='https://1drv.ms/f/c/ccb87158314f490b/Et1ZKaGD6XBPhOD7Qd6vnRYBrPaaR5KlRftHOaW4Y8rIvg?e=b76qgk'">basquet</button>
+      <button onclick="window.location.href='https://1drv.ms/i/c/ccb87158314f490b/EbWKy5tCHmlNuNHGBuF6vlwBX5Q3YfBosMC_wVKcp7xO1g?e=E9EVGO'">horari</button>
     </div>
+  </div>
 
-    <!-- Menú de navegación -->
-    <nav class="main-menu">
-        <ul>
-            <li><a href="#" onclick="showInitialScreen(event)">
-                <img src="imagenes/casa.png" alt="Inicio" class="home-icon">
-            </a></li>
-            <li><a href="https://user15151515.github.io/perdo/">perdó</a></li>
-            <li><a href="https://user15151515.github.io/deudas/">deudas</a></li>
-            <li><a href="https://user15151515.github.io/pelis-series/">pelis/series</a></li>
-            <li><a href="https://user15151515.github.io/padel/">pàdel</a></li>
-            <li><a href="https://1drv.ms/f/c/ccb87158314f490b/Et1ZKaGD6XBPhOD7Qd6vnRYBrPaaR5KlRftHOaW4Y8rIvg?e=b76qgk">basquet</a></li>
-            
-
-        </ul>
-    </nav>
-
-    <!-- Contador de tiempo -->
-    <div id="time-counter">
-        <strong id="time-title" style="color:#ff4081">tiempo sufrido:</strong>
-        <span id="time-elapsed">calculando...</span>
+  <!-- Menú de navegación -->
+  <nav class="main-menu">
+    <!-- Botón del menú (hamburger icon) -->
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
+    
+    <!-- Enlaces del menú -->
+    <ul id="menu-links">
+      <li>
+        <a href="#" onclick="showInitialScreen(event)">
+          <img src="imagenes/casa.png" alt="Inicio" class="home-icon">
+        </a>
+      </li>
+      <li><a href="https://user15151515.github.io/perdo/">perdó</a></li>
+      <li><a href="https://user15151515.github.io/deudas/">deudas</a></li>
+      <li><a href="https://user15151515.github.io/pelis-series/">pelis/series</a></li>
+      <li><a href="https://user15151515.github.io/padel/">pàdel</a></li>
+      <li><a href="https://1drv.ms/f/c/ccb87158314f490b/Et1ZKaGD6XBPhOD7Qd6vnRYBrPaaR5KlRftHOaW4Y8rIvg?e=b76qgk">basquet</a></li>
+      <li><a href="https://1drv.ms/i/c/ccb87158314f490b/EbWKy5tCHmlNuNHGBuF6vlwBX5Q3YfBosMC_wVKcp7xO1g?e=E9EVGO">horari</a></li>
+    </ul>
+  </nav>
 
-    <script src="script.js"></script>
+  <!-- Contador de tiempo -->
+  <div id="time-counter">
+    <strong id="time-title" style="color:#ff4081">tiempo sufrido:</strong>
+    <span id="time-elapsed">calculando...</span>
+  </div>
+
+  <!-- Tu JS (asegúrate de que exista y no oculte #initial-message) -->
+  <script src="script.js"></script>
 </body>
 </html>

@@ -7,117 +7,25 @@
     --gray-light: #ddd;
     --background-light: #ffefef;
     --white: #fff;
-}
-
-/* Reset general */
-* {
+  }
+  
+  /* Reset general */
+  * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-/* Estilo del cuerpo */
-body {
+  }
+  
+  /* BODY:
+     Quitamos el display: flex y height: 100vh; 
+     para que el contenido fluya normalmente */
+  body {
     background: var(--background-light);
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     font-family: Arial, sans-serif;
-}
-
-/* Contenedor general */
-.container {
-    background-color: var(--white);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    max-width: 400px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    margin-top: 60px;
-}
-
-/* Tipografía */
-h1 {
-    font-size: 2rem;
-    color: var(--pink-bright);
-    margin-bottom: 10px;
-}
-
-p {
-    margin: 10px 0;
-    font-size: 1.2rem;
-    color: var(--gray-dark);
-}
-
-/* Formularios */
-form {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-}
-
-input {
-    width: 100%;
-    padding: 10px;
-    border: 2px solid var(--gray-light);
-    border-radius: 5px;
-    text-align: center;
-}
-
-button {
-    padding: 10px 20px;
-    background-color: var(--pink-bright);
-    color: var(--white);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: var(--pink-hover);
-}
-
-/* Barra de progreso */
-#result {
-    margin-top: 20px;
-    font-size: 1.5rem;
-    color: var(--gray-dark);
-    width: 100%;
-}
-
-.progress-bar-container {
-    width: 100%;
-    background-color: var(--gray-light);
-    border-radius: 25px;
-    margin-top: 20px;
-}
-
-.progress-bar {
-    height: 30px;
-    width: 0;
-    background-color: var(--pink-bright);
-    border-radius: 25px;
-    transition: width 1s;
-}
-
-#percentage {
-    font-size: 1.5rem;
-    color: var(--pink-bright);
-}
-
-/* Menú principal */
-.main-menu {
+  }
+  
+  /* Menú principal (fijo arriba) */
+  .main-menu {
     background-color: var(--pink-bright);
     padding: 10px 0;
     text-align: center;
@@ -128,100 +36,94 @@ button:hover {
     z-index: 1000;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     transition: box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-.main-menu:hover {
+  }
+  
+  /* Efecto hover en escritorio */
+  .main-menu:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-}
-
-.main-menu ul {
+  }
+  
+  /* Enlaces principales */
+  .main-menu ul {
     list-style: none;
-    display: flex;
+    display: flex; /* Horizontal en escritorio */
     justify-content: center;
     align-items: center;
-}
-
-.main-menu li {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .main-menu li {
     margin: 0 15px;
-}
-
-.main-menu a {
+  }
+  
+  .main-menu a {
     color: var(--white);
     text-decoration: none;
     font-size: 1.2rem;
     font-weight: bold;
-}
-
-.main-menu a:hover {
+  }
+  .main-menu a:hover {
     color: var(--pink-light);
-}
-
-.home-icon {
+  }
+  
+  /* Icono de la casita */
+  .home-icon {
     width: 40px;
     height: 40px;
+    vertical-align: middle;
     cursor: pointer;
     transition: transform 0.2s ease, opacity 0.2s ease;
-    vertical-align: middle;
-}
-
-/* Sección Perdón */
-#perdo-section {
-    display: none;
-    background-color: var(--background-light);
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#perdo-section #container {
-    text-align: center;
-    background: var(--white);
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-#message {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-.buttons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-#initial-message,
-#love-tester-section,
-#perdo-section {
+  }
+  
+  /* El ícono de hamburguesa (tres líneas) */
+  .menu-toggle {
+    display: none; /* Se activa solo en móvil */
+    cursor: pointer;
+    padding: 10px;
+  }
+  .menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: var(--white);
+    transition: all 0.3s ease;
+  }
+  
+  /* Al abrir el menú, animación de las barritas */
+  .main-menu.open .menu-toggle span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .main-menu.open .menu-toggle span:nth-child(2) {
     opacity: 0;
-    animation: fadeIn 0.8s ease-in-out forwards;
-}
-
-/* Mensaje inicial */
-#initial-message {
+  }
+  .main-menu.open .menu-toggle span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+  
+  #initial-message {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    height: 100vh;
+    height: 110vh;
     width: 100%;
     padding: 0 20px;
     box-sizing: border-box;
     margin-top: -40px;
     animation: float 3s ease-in-out infinite, fadeIn 0.8s ease-in-out forwards;
 }
-
-#initial-message h2 {
-    margin-bottom: 20px;
-}
-
-#initial-message button {
+  
+  /* Botones del mensaje inicial */
+  #initial-message-button {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+  #initial-message button {
     padding: 20px;
     font-size: 16px;
     color: var(--white);
@@ -231,20 +133,36 @@ button:hover {
     cursor: pointer;
     transition: all 0.3s ease;
     margin: 10px;
-}
-
-#initial-message button:hover {
+  }
+  #initial-message button:hover {
     transform: scale(1.1);
-}
-
-/* Contenedor de botones con comportamiento estricto */
-#initial-message-button {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: center;
-}
-
-#time-counter {
+  }
+  
+  /* Si tienes más secciones ocultas inicialmente */
+  #love-tester-section, 
+  #perdo-section {
+    display: none;
+    opacity: 0;
+  }
+  
+  /* Animaciones keyframes */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(5px); }
+  }
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(15px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Contador de tiempo, fijo abajo a la derecha */
+  #time-counter {
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -253,97 +171,92 @@ button:hover {
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     font-family: Arial, sans-serif;
-}
-
-#time-counter strong {
+  }
+  #time-counter strong {
     color: var(--pink-bright);
-}
-
-/* Animaciones */
-@keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(5px); }
-}
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(15px);
+  }
+  
+  /* Responsive: menú hamburguesa en móvil */
+  @media (max-width: 600px) {
+  
+    /* Mostrar el ícono hamburger en móvil */
+    .menu-toggle {
+      display: block;
     }
-    100% {
+  
+    /* Ocultar la lista de enlaces por defecto en móvil */
+    .main-menu ul {
+      display: none;
+      flex-direction: column;
+      background-color: var(--pink-bright);
+      position: absolute;
+      left: 0;
+      width: 100%;
+      margin: 0;
+      padding: 10px 0;
+      box-shadow: 0 10px 8px rgba(1, 0, 0, 0.2);
+    }
+  
+    /* Al abrir el menú (.open), se muestra con animación */
+    .main-menu.open ul {
+      display: flex;
+      animation: slideInDown 0.3s forwards;
+    }
+  
+    @keyframes slideInDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      100% {
         opacity: 1;
         transform: translateY(0);
+      }
     }
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-    .container {
-        max-width: 90%;
-        padding: 15px;
-    }
-
-    .main-menu ul {
-        flex-direction: row;
-        overflow-x: auto;
-        white-space: nowrap;
-    }
-
+  
+    /* Ajustes de márgenes y tamaños */
     .main-menu li {
-        margin: 0 10px;
+      margin: 10px 0;
     }
-
     .home-icon {
-        width: 30px;
-        height: 30px;
+      width: 30px;
+      height: 30px;
     }
-
-    h1 {
-        font-size: 1.5rem;
-    }
-
-    #initial-message {
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        width: 100%;
-        padding: 0 10px;
-        box-sizing: border-box;
-    }
-
-    #initial-message button {
-        width: 100%;
-        max-width: 300px;
-        font-size: 1rem;
-        padding: 12px 15px;
-        margin: 10px auto;
-    }
-
-    #initial-message-button {
-        flex-wrap: wrap;
-        flex-direction: column;
-    }
-
-    #time-counter {
-        bottom: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-        padding: 15px 20px;
-        font-size: 0.9rem;
-        width: 90%;
-        max-width: 400px;
-        text-align: center;
-        background-color: var(--background-light);
-        border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        line-height: 1.5;
-    }
-
     .main-menu {
-        padding: 5px 0;
+      padding: 5px 0;
     }
-
     .main-menu a {
-        font-size: 1rem;
+      font-size: 1rem;
     }
-}
+  
+    /* Ajusta #initial-message en móvil */
+    #initial-message {
+      padding: 20px;
+    }
+    #initial-message button {
+      width: 100%;
+      max-width: 300px;
+      font-size: 1rem;
+      padding: 12px 15px;
+      margin: 10px auto;
+    }
+    #initial-message-button {
+      flex-wrap: wrap;
+      flex-direction: column;
+      margin-top: 10px;
+    }
+  
+    /* Ajuste del contador de tiempo en móvil */
+    #time-counter {
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 15px 20px;
+      font-size: 0.9rem;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      line-height: 1.5;
+    }
+  }
+  

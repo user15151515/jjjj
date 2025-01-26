@@ -58,3 +58,8 @@ document.getElementById("time-counter").addEventListener("click", toggleTimeMode
 setInterval(updateTime, 1000);
 
 updateTime();
+
+function toggleMenu() {
+  var menu = document.querySelector('.main-menu');
+  menu.classList.toggle('open');
+}
