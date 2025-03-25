@@ -10,7 +10,7 @@
 <body>
 
   <!-- Contenedor inicial con el mensaje y botones -->
-  <div id="initial-message">
+  <main id="initial-message">
     <h2>hola bb que necessites</h2>
     <div id="initial-message-button">
       <button onclick="window.location.href='https://user15151515.github.io/perdo/'">estas enfadada</button>
@@ -22,38 +22,33 @@
       <button onclick="window.location.href='https://user15151515.github.io/simulador/'">simulador</button>
 
     </div>
-  </div>
+  </main>
 
   <!-- Menú de navegación -->
   <nav class="main-menu">
-    <!-- Botón del menú (hamburger icon) -->
-    <div class="menu-toggle" onclick="toggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    
-    <!-- Enlaces del menú -->
-    <ul id="menu-links">
-      <li>
-        <a href="#" onclick="showInitialScreen(event)">
-          <img src="imagenes/casa.png" alt="Inicio" class="home-icon">
-        </a>
-      </li>
-      <li><a href="https://user15151515.github.io/perdo/">perdó</a></li>
-      <li><a href="https://user15151515.github.io/deudas/">deudas</a></li>
-      <li><a href="https://user15151515.github.io/pelis-series/">pelis/series</a></li>
-      <li><a href="https://user15151515.github.io/padel/">pàdel</a></li>
-      <li><a href="https://1drv.ms/f/c/ccb87158314f490b/Et1ZKaGD6XBPhOD7Qd6vnRYBrPaaR5KlRftHOaW4Y8rIvg?e=b76qgk">basquet</a></li>
-      <li><a href="https://1drv.ms/i/c/ccb87158314f490b/EbWKy5tCHmlNuNHGBuF6vlwBX5Q3YfBosMC_wVKcp7xO1g?e=E9EVGO">horari</a></li>
-    </ul>
-  </nav>
+    <div class="main-menu-content">
+      <button id="search-toggle" class="search-icon">
+        <img src="imagenes/lupa.png" alt="Buscar" class="lupa-img">
+      </button>
+  
+      <h1 class="h1">t'estimo</h1>
 
+    </div>
+
+  </nav>
+  
+  <!-- Wizard de búsqueda -->
+  <div id="search-modal" class="search-modal">
+    <div class="search-modal-content">
+      <input type="text" id="search-input" placeholder="posa el nom de la web i clica enter jeje">
+    </div>
+  </div>
+  
   <!-- Contador de tiempo -->
-  <div id="time-counter">
+  <footer id="time-counter">
     <strong id="time-title" style="color:#ff4081">tiempo sufrido:</strong>
     <span id="time-elapsed">calculando...</span>
-  </div>
+  </footer>
 
   <!-- Tu JS (asegúrate de que exista y no oculte #initial-message) -->
   <script src="script.js"></script>

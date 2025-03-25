@@ -20,10 +20,8 @@ function updateTime() {
 
     let next20th;
     if (now.getDate() > 20) {
-        // Si el día actual es mayor al 20, calcular el próximo 20 en el siguiente mes
         next20th = new Date(now.getFullYear(), now.getMonth() + 1, 20);
     } else {
-        // Si el día actual es menor o igual al 20, calcular el 20 del mes actual
         next20th = new Date(now.getFullYear(), now.getMonth(), 20);
     }
 
@@ -45,7 +43,6 @@ function updateTime() {
 function toggleTimeMode() {
     const now = new Date();
     if (!isTimeElapsed && now.getDate() === 20) {
-        // Mostrar felicitaciones si se pulsa el contador y es día 20
         document.getElementById("time-counter").innerHTML = `<strong>¡Felicidades, mi amor! 🎉❤️</strong>`;
         return;
     }
@@ -59,7 +56,29 @@ setInterval(updateTime, 1000);
 
 updateTime();
 
-function toggleMenu() {
-  var menu = document.querySelector('.main-menu');
-  menu.classList.toggle('open');
-}
+
+const searchToggle = document.getElementById("search-toggle");
+const searchModal = document.getElementById("search-modal");
+const searchInput = document.getElementById("search-input");
+
+searchToggle.addEventListener("click", () => {
+  searchModal.style.display = "flex";
+  searchInput.focus();
+});
+
+searchModal.addEventListener("click", (e) => {
+  if (e.target === searchModal) {
+    searchModal.style.display = "none";
+  }
+});
+
+searchInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    const query = searchInput.value.trim();
+    if (query) {
+      window.location.href = `https://user15151515.github.io/${encodeURIComponent(query)}/`;
+    }
+  } else if (e.key === "Escape") {
+    searchModal.style.display = "none";
+  }
+});

@@ -1,263 +1,283 @@
-/* Variables de colores principales */
 :root {
-    --pink-bright: #ff4081;
-    --pink-hover: #e03570;
-    --pink-light: #ffd1e1;
-    --gray-dark: #333;
-    --gray-light: #ddd;
-    --background-light: #ffefef;
-    --white: #fff;
+  --pink-bright: #ff4081;
+  --pink-hover: #e03570;
+  --pink-light: #ffd1e1;
+  --gray-dark: #333;
+  --gray-light: #ddd;
+  --background-light: #ffefef;
+  --white: #fff;
+  --text-color: var(--gray-dark);
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--background-light);
+  font-family: Arial, sans-serif;
+  color: var(--text-color);
+  overflow-x: hidden;
+}
+
+/* MENÚ SUPERIOR */
+.main-menu {
+  background-color: var(--pink-bright);
+  height: 60px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+
+}
+
+.main-menu:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.main-menu-content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  position: relative;
+}
+
+/* LUPA */
+.search-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.lupa-img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
+  transition: transform 0.2s ease;
+}
+
+.lupa-img:hover {
+  transform: scale(1.1);
+}
+
+/* TÍTULO CENTRADO */
+.h1 {
+  font-size: 1.4rem;
+  color: white;
+  margin: 0 auto;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.home-icon {
+  width: 40px;
+  height: 40px;
+  vertical-align: middle;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* WIZARD DE BÚSQUEDA */
+.search-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.search-modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  width: 90%;
+  max-width: 400px;
+  animation: scaleIn 0.3s ease forwards;
+}
+
+.search-modal input {
+  width: 100%;
+  padding: 14px 20px;
+  font-size: 18px;
+  border: 2px solid var(--pink-bright);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.search-modal input:focus {
+  border-color: var(--pink-hover);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* PANTALLA INICIAL */
+#initial-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: calc(100vh - 60px);
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+  margin-top: 60px;
+  animation: float 3s ease-in-out infinite, fadeIn 0.8s ease-in-out forwards;
+}
+
+#initial-message-button {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+#initial-message button {
+  padding: 20px;
+  font-size: 16px;
+  color: var(--white);
+  background-color: var(--pink-bright);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 10px;
+}
+
+#initial-message button:hover {
+  transform: scale(1.1);
+}
+
+/* CONTADOR TIEMPO */
+#time-counter {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--background-light);
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  font-family: Arial, sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#time-counter:hover {
+  background-color: var(--pink-light);
+}
+
+#time-counter strong {
+  color: var(--pink-bright);
+}
+
+/* MÓVIL */
+@media (max-width: 600px) {
+  .menu-toggle {
+    display: block;
   }
-  
-  /* Reset general */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+  .main-menu-content {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 10px;
   }
-  
-  /* BODY:
-     Quitamos el display: flex y height: 100vh; 
-     para que el contenido fluya normalmente */
-  body {
-    background: var(--background-light);
-    font-family: Arial, sans-serif;
-  }
-  
-  /* Menú principal (fijo arriba) */
-  .main-menu {
+
+  .main-menu ul {
+    display: none;
+    flex-direction: column;
     background-color: var(--pink-bright);
-    padding: 10px 0;
-    text-align: center;
-    position: fixed;
-    top: 0;
+    position: absolute;
+    top: 60px;
     left: 0;
     width: 100%;
-    z-index: 1000;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    padding: 10px 0;
+    box-shadow: 0 10px 8px rgba(1, 0, 0, 0.2);
+
   }
-  
-  /* Efecto hover en escritorio */
-  .main-menu:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+
+  .main-menu.open ul {
+    display: flex;
+    animation: slideInDown 0.3s forwards;
   }
-  
-  /* Enlaces principales */
-  .main-menu ul {
-    list-style: none;
-    display: flex; /* Horizontal en escritorio */
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    padding: 0;
+
+  @keyframes slideInDown {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
   }
-  
+
   .main-menu li {
-    margin: 0 15px;
+    margin: 10px 0;
   }
-  
-  .main-menu a {
-    color: var(--white);
-    text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: bold;
-  }
-  .main-menu a:hover {
-    color: var(--pink-light);
-  }
-  
-  /* Icono de la casita */
+
   .home-icon {
-    width: 40px;
-    height: 40px;
-    vertical-align: middle;
-    cursor: pointer;
-    transition: transform 0.2s ease, opacity 0.2s ease;
+    width: 30px;
+    height: 30px;
   }
-  
-  /* El ícono de hamburguesa (tres líneas) */
-  .menu-toggle {
-    display: none; /* Se activa solo en móvil */
-    cursor: pointer;
-    padding: 10px;
-  }
-  .menu-toggle span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    margin: 5px auto;
-    background-color: var(--white);
-    transition: all 0.3s ease;
-  }
-  
-  /* Al abrir el menú, animación de las barritas */
-  .main-menu.open .menu-toggle span:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-  }
-  .main-menu.open .menu-toggle span:nth-child(2) {
-    opacity: 0;
-  }
-  .main-menu.open .menu-toggle span:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-  }
-  
-  #initial-message {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    height: 110vh;
-    width: 100%;
-    padding: 0 20px;
-    box-sizing: border-box;
-    margin-top: -40px;
-    animation: float 3s ease-in-out infinite, fadeIn 0.8s ease-in-out forwards;
-}
-  
-  /* Botones del mensaje inicial */
-  #initial-message-button {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: center;
-  }
-  #initial-message button {
-    padding: 20px;
-    font-size: 16px;
-    color: var(--white);
-    background-color: var(--pink-bright);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin: 10px;
-  }
-  #initial-message button:hover {
-    transform: scale(1.1);
-  }
-  
-  /* Si tienes más secciones ocultas inicialmente */
-  #love-tester-section, 
-  #perdo-section {
+
+  .h1 {
     display: none;
-    opacity: 0;
   }
-  
-  /* Animaciones keyframes */
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(5px); }
+
+  #initial-message {
+    padding: 20px;
   }
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-      transform: translateY(15px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
+
+  #initial-message-button {
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin-top: 30px;
   }
-  
-  /* Contador de tiempo, fijo abajo a la derecha */
+
+  #initial-message button {
+    width: 100%;
+    max-width: 300px;
+    font-size: 1rem;
+    padding: 12px 15px;
+    margin: 10px auto;
+  }
+
   #time-counter {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: var(--background-light);
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
     padding: 15px 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    font-family: Arial, sans-serif;
+    font-size: 0.9rem;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    line-height: 1.5;
   }
-  #time-counter strong {
-    color: var(--pink-bright);
+
+  .lupa-img {
+    width: 20px;
+    height: 20px;
   }
-  
-  /* Responsive: menú hamburguesa en móvil */
-  @media (max-width: 600px) {
-  
-    /* Mostrar el ícono hamburger en móvil */
-    .menu-toggle {
-      display: block;
-    }
-  
-    /* Ocultar la lista de enlaces por defecto en móvil */
-    .main-menu ul {
-      display: none;
-      flex-direction: column;
-      background-color: var(--pink-bright);
-      position: absolute;
-      left: 0;
-      width: 100%;
-      margin: 0;
-      padding: 10px 0;
-      box-shadow: 0 10px 8px rgba(1, 0, 0, 0.2);
-    }
-  
-    /* Al abrir el menú (.open), se muestra con animación */
-    .main-menu.open ul {
-      display: flex;
-      animation: slideInDown 0.3s forwards;
-    }
-  
-    @keyframes slideInDown {
-      0% {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  
-    /* Ajustes de márgenes y tamaños */
-    .main-menu li {
-      margin: 10px 0;
-    }
-    .home-icon {
-      width: 30px;
-      height: 30px;
-    }
-    .main-menu {
-      padding: 5px 0;
-    }
-    .main-menu a {
-      font-size: 1rem;
-    }
-  
-    /* Ajusta #initial-message en móvil */
-    #initial-message {
-      padding: 20px;
-      height: 95vh;
-    }
-    #initial-message button {
-      width: 100%;
-      max-width: 300px;
-      font-size: 1rem;
-      padding: 12px 15px;
-      margin: 10px auto;
-    }
-    #initial-message-button {
-      flex-wrap: wrap;
-      flex-direction: column;
-      margin-top: 10px;
-    }
-  
-    /* Ajuste del contador de tiempo en móvil */
-    #time-counter {
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      padding: 15px 20px;
-      font-size: 0.9rem;
-      width: 90%;
-      max-width: 400px;
-      text-align: center;
-      line-height: 1.5;
-    }
-  }
-  
+}
