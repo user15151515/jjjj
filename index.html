@@ -3,199 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Visualizador de Fracciones</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(135deg, #f4f6f9, #e1e8f0);
-      color: #333;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-    }
-    .container {
-      width: 90%;
-      max-width: 600px;
-      margin-top: 60px;
-      margin-bottom: 60px;
-      text-align: center;
-    }
-    h1 {
-      color: #2c3e50;
-      margin-bottom: 30px;
-      font-weight: 600;
-    }
-    form {
-      background-color: #fff;
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    label {
-      font-weight: 500;
-      font-size: 1rem;
-      text-align: left;
-    }
-    input[type="text"] {
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 1rem;
-      transition: border-color 0.3s;
-    }
-    input[type="text"]:focus {
-      outline: none;
-      border-color: #27ae60;
-      box-shadow: 0 0 5px rgba(39, 174, 96, 0.3);
-    }
-    button {
-      padding: 12px;
-      font-size: 1rem;
-      background-color: #27ae60;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s, transform 0.2s;
-    }
-    button:hover {
-      background-color: #219150;
-      transform: translateY(-2px);
-    }
-    #charts {
-      background-color: #fff;
-      padding: 30px;
-      margin-top: 40px;
-      border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-      display: none;
-    }
-    #pieChart {
-      max-width: 250px;
-      margin: 0 auto;
-    }
-    .segment-bar {
-      width: 100%;
-      height: 30px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      overflow: hidden;
-      display: flex;
-      margin-top: 20px;
-    }
-    .segment {
-      flex: 1;
-      border-right: 1px solid #eee;
-      transition: background-color 0.3s;
-    }
-    .segment:last-child {
-      border-right: none;
-    }
-    .segment.filled {
-      background-color: #27ae60;
-    }
-    #percentage {
-      font-weight: 600;
-      font-size: 1.2rem;
-      color: #34495e;
-      margin-top: 15px;
-    }
-    @media (max-width: 600px) {
-      .container {
-        margin-top: 40px;
-        margin-bottom: 40px;
-      }
-      form, #charts {
-        padding: 20px;
-      }
-    }
-  </style>
+  <title>‎ </title>  
+  <link rel="icon" href="imagenes/logo.ico" type="image/x-icon">   
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>temario</h1>
-    <form id="fractionForm">
-      <label for="fractionInput">Introduce la fracción:</label>
-      <input type="text" id="fractionInput" name="fraction" placeholder="12/62" required>
-      <button type="submit">Visualizar</button>
-    </form>
-    <div id="charts">
-      <canvas id="pieChart" width="250" height="250"></canvas>
-      <div id="segmentBar" class="segment-bar"></div>
-      <p id="percentage"></p>
+
+  <!-- Contenedor inicial con el mensaje y botones -->
+  <main id="initial-message">
+    <h2>hola bb que necessites</h2>
+    <div id="initial-message-button">
+      <button onclick="window.location.href='https://user15151515.github.io/perdo/'">estas enfadada</button>
+      <button onclick="window.location.href='https://user15151515.github.io/deudas/'">deudas</button>
+      <button onclick="window.location.href='https://user15151515.github.io/pelis-series/'">pelis/series</button>
+      <button onclick="window.location.href='https://user15151515.github.io/padel/'">pàdel</button>
+      <button onclick="window.location.href='https://1drv.ms/f/c/ccb87158314f490b/Et1ZKaGD6XBPhOD7Qd6vnRYBrPaaR5KlRftHOaW4Y8rIvg?e=b76qgk'">basquet</button>
+
+    </div>
+  </main>
+
+  <!-- Menú de navegación -->
+  <nav class="main-menu">
+    <div class="main-menu-content">
+      <button id="search-toggle" class="search-icon">
+        <img src="imagenes/lupa.png" alt="Buscar" class="lupa-img">
+      </button>
+  
+      <h1 class="h1">t'estimo</h1>
+
+    </div>
+
+  </nav>
+  
+  <!-- Wizard de búsqueda -->
+  <div id="search-modal" class="search-modal">
+    <div class="search-modal-content">
+      <input type="text" id="search-input" placeholder="posa el nom de la web i clica enter jeje">
     </div>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script>
-    document.getElementById('fractionForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const fractionStr = document.getElementById('fractionInput').value.trim();
-      const parts = fractionStr.split('/');
-      if (parts.length !== 2) {
-        alert('Formato incorrecto. Usa el formato numerador/denominador (ej. 12/62).');
-        return;
-      }
-      const numerator = parseFloat(parts[0]);
-      const denominator = parseFloat(parts[1]);
-      if (isNaN(numerator) || isNaN(denominator) || denominator === 0) {
-        alert('Valores inválidos. Asegúrate de que ambos sean números y el denominador no sea 0.');
-        return;
-      }
-      const percentage = ((numerator / denominator) * 100).toFixed(2);
-      // Mostrar sección de gráficos
-      document.getElementById('charts').style.display = 'block';
-      // Gráfico de pastel
-      const ctx = document.getElementById('pieChart').getContext('2d');
-      if (window.myPieChart) {
-        window.myPieChart.destroy();
-      }
-      window.myPieChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-          labels: ['Parte', 'Resto'],
-          datasets: [{
-            data: [numerator, denominator - numerator],
-            backgroundColor: ['#27ae60', '#ecf0f1'],
-            borderWidth: 1,
-            borderColor: '#fff'
-          }]
-        },
-        options: {
-          responsive: false,
-          plugins: {
-            tooltip: {
-              callbacks: {
-                label: function(context) {
-                  return context.label + ': ' + context.parsed;
-                }
-              }
-            }
-          }
-        }
-      });
-      // Barra de segmentos
-      const segmentBar = document.getElementById('segmentBar');
-      segmentBar.innerHTML = '';
-      for (let i = 0; i < denominator; i++) {
-        const segmentDiv = document.createElement('div');
-        segmentDiv.classList.add('segment');
-        if (i < numerator) {
-          segmentDiv.classList.add('filled');
-        }
-        segmentBar.appendChild(segmentDiv);
-      }
-      document.getElementById('percentage').innerText = 'Porcentaje: ' + percentage + '%';
-    });
-  </script>
+  
+  <!-- Contador de tiempo -->
+  <footer id="time-counter">
+    <strong id="time-title" style="color:#ff4081">tiempo sufrido:</strong>
+    <span id="time-elapsed">calculando...</span>
+  </footer>
+
+  <!-- Tu JS (asegúrate de que exista y no oculte #initial-message) -->
+  <script src="script.js"></script>
 </body>
 </html>
