@@ -18,7 +18,7 @@
 
 body {
   background: var(--background-light);
-  font-family: Arial, sans-serif;
+  font-family: 'Nunito', sans-serif;
   color: var(--text-color);
   overflow-x: hidden;
 }
@@ -172,11 +172,17 @@ body {
   cursor: pointer;
   transition: all 0.3s ease;
   margin: 10px;
+  font-family: 'Nunito', sans-serif;
+
+  
 }
 
 #initial-message button:hover {
   transform: scale(1.1);
 }
+
+#initial-message h2{
+font-weight: 600;}
 
 /* CONTADOR TIEMPO */
 #time-counter {
@@ -225,6 +231,8 @@ body {
 
   #initial-message {
     padding: 20px;
+    font-size: 6vw;
+
   }
 
   #initial-message-button {
@@ -236,9 +244,10 @@ body {
   #initial-message button {
     width: 100%;
     max-width: 300px;
-    font-size: 1rem;
     padding: 12px 15px;
     margin: 10px auto;
+    font-size: 4vw;
+    padding: 12px 15px; /* Tamaño fijo para mantener usabilidad */
   }
 
   #time-counter {
@@ -258,3 +267,5 @@ body {
     height: 20px;
   }
 }
+
+
